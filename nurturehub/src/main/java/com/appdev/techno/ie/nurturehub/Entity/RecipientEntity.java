@@ -28,6 +28,7 @@ public class RecipientEntity {
 	private String contact_info;
 	private String address;
 	private int age;
+	private int isDeleted;
 	
 	public RecipientEntity() {
 		super();
@@ -46,6 +47,7 @@ public class RecipientEntity {
 		this.contact_info = contact_info;
 		this.address = address;
 		this.age = age;
+		this.isDeleted = 0;
 	}
 
 	public int getRecipientId() {

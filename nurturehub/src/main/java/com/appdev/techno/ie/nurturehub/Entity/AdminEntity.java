@@ -20,6 +20,7 @@ public class AdminEntity {
 	String lastname;	
 	String password;
 	String contact_information;
+	private int isDeleted;
 	
 	public AdminEntity() {
 		super();
@@ -32,6 +33,7 @@ public class AdminEntity {
 		this.lastname = lastname;
 		this.password = password;
 		this.contact_information = contact_information;
+		this.isDeleted = 0;
 	}
 
 	public int getAdminId() {

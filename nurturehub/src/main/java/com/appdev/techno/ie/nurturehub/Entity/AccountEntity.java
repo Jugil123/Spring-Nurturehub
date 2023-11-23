@@ -21,6 +21,7 @@ public class AccountEntity {
 	
 	private String password;
 	private int userType;
+	private int isDeleted;
 	
 	public AccountEntity() {
 		super();
@@ -32,6 +33,7 @@ public class AccountEntity {
 		this.username = username;
 		this.password = password;
 		this.userType = userType;
+		this.isDeleted = 0;
 	}
 
 	public int getId() {

@@ -30,6 +30,7 @@ public class CaregiverEntity {
 	private String specializations;
 	private String availability;
 	private double hourlyRate;
+	private int isDeleted;
 	
 	public CaregiverEntity() {
 		super();
@@ -51,6 +52,7 @@ public class CaregiverEntity {
 		this.specializations = specializations;
 		this.availability = availability;
 		this.hourlyRate = hourlyRate;
+		this.isDeleted = 0;
 	}
 
 	public int getCaregiverId() {
