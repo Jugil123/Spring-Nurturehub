@@ -119,4 +119,14 @@ public class CaregiverService {
 	            return ResponseEntity.notFound().build();
 	        }
 	    }
+	 
+	 public ResponseEntity<List<CaregiverEntity>> searchCaregiver(String searchString) {
+		    List<CaregiverEntity> caregivers = crepo.findByCombinedName(searchString);
+
+		    if (!caregivers.isEmpty()) {
+		        return ResponseEntity.ok(caregivers);
+		    } else {
+		        return ResponseEntity.notFound().build();
+		    }
+	 }
 }

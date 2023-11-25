@@ -151,6 +151,4 @@ public class CaregiverEntity {
 		this.hourlyRate = hourlyRate;
 	}
 	
-
-	
 }

@@ -63,4 +63,9 @@ public class CaregiverController {
 	 public ResponseEntity<CaregiverEntity> getRecipientById(@PathVariable int cid){
 		 return cserv.getCaregiverById(cid);
 	 }
+	
+	@GetMapping("/searchCaregiver")
+	public ResponseEntity<List<CaregiverEntity>> searchCaregiver(@RequestParam String searchString) {
+		return cserv.searchCaregiver(searchString);
+	}
 }
