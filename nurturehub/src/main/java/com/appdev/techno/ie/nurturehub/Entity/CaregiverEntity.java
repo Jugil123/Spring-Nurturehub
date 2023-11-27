@@ -150,5 +150,13 @@ public class CaregiverEntity {
 	public void setHourlyRate(double hourlyRate) {
 		this.hourlyRate = hourlyRate;
 	}
+
+	public int getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(int isDeleted) {
+		this.isDeleted = isDeleted;
+	}
 	
 }

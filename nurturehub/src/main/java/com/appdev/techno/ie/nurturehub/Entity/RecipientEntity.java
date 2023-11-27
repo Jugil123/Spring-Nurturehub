@@ -129,6 +129,14 @@ public class RecipientEntity {
 	public void setAge(int age) {
 		this.age = age;
 	}
+
+	public int getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(int isDeleted) {
+		this.isDeleted = isDeleted;
+	}
 	
 	
 	

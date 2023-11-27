@@ -85,16 +85,21 @@ public class CaregiverService {
 	        // Get caregiver by id
 	        CaregiverEntity caregiver = crepo.findById(cid).get();
 	        
-	        // Delete caregiver's account
-	        aserv.deleteAccount(caregiver.getUsername());
-	        
-	        // Delete caregiver
-	        crepo.deleteById(cid);
-	        msg = "Caregiver " + cid + " is successfully deleted!";
+	     // Check if caregiver is already deleted
+	        if (caregiver.getIsDeleted() == 1) {
+	            msg = "Caregiver " + cid + " is already deleted!";
+	        } else {
+	            // Set isDeleted to 1 instead of physically deleting
+	            caregiver.setIsDeleted(1);
+	            crepo.save(caregiver);
+	            msg = "Caregiver " + cid + " is successfully marked as deleted!";
+	        }
 	    } else {
 	        msg = "Caregiver " + cid + " does not exist";
 	    }
+
 	    return msg;
+
 	}
 
 	 public String login(LoginRequest loginRequest) {

@@ -68,6 +68,14 @@ public class AccountEntity {
 		this.userType = userType;
 	}
 
+	public int getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(int isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+
 	
 
 }

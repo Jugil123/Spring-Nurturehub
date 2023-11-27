@@ -84,17 +84,21 @@ public class RecipientService {
 	    if (rrepo.findById(rid).isPresent()) {
 	        // Get recipient by id
 	        RecipientEntity recipient = rrepo.findById(rid).get();
-	        
-	        // Delete recipient's account
-	        aserv.deleteAccount(recipient.getUsername());
-	        
-	        // Delete recipient
-	        rrepo.deleteById(rid);
-	        msg = "Recipient " + rid + " is successfully deleted!";
-	    } else {
-	        msg = "Recipient " + rid + " does not exist";
-	    }
-	    return msg;
+	        	        
+		     // Check if caregiver is already deleted
+		        if (recipient.getIsDeleted() == 1) {
+		            msg = "Recipient " + rid + " is already deleted!";
+		        } else {
+		            // Set isDeleted to 1 instead of physically deleting
+		            recipient.setIsDeleted(1);
+		            rrepo.save(recipient);
+		            msg = "Recipient " + rid + " is successfully marked as deleted!";
+		        }
+		    } else {
+		        msg = "Recipient " + rid + " does not exist";
+		    }
+
+		    return msg;
 	}
 
 	
