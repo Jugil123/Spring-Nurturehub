@@ -71,7 +71,7 @@ public class AccountService {
 		        // Implement your custom logic to authenticate the user
 		        AccountEntity user = arepo.findByUsername(username);
 
-		        if (user != null && user.getPassword().equals(password)) {
+		        if (user != null && user.getPassword().equals(password) && user.getIsDeleted() != 1) {
 		            return user.getUserType();
 		        } else {
 		            return 0;
