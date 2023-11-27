@@ -34,7 +34,7 @@ public class RecipientService {
 	//C - Create or insert recipient record in tblrecipient
 	public RecipientEntity insertRecipient(RecipientEntity recipient) {
 	    // Check if the username already exists in the AccountEntity
-	    AccountEntity existingAccount = arepo.findByUsername(recipient.getUsername());
+	    AccountEntity existingAccount = arepo.findByUsernameAndIsDeleted(recipient.getUsername(), 0);
 	    if (existingAccount != null) {
 	        // Handle the case where the username already exists
 	        // For example, you might throw an exception or return null

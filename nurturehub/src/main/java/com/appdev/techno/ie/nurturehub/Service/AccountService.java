@@ -53,8 +53,9 @@ public class AccountService {
 		public String deleteAccount(String username) {
 			String msg = "";
 			
-			if(arepo.findByUsername(username) != null) {
-				AccountEntity account = arepo.findByUsername(username);
+			AccountEntity account = arepo.findByUsernameAndIsDeleted(username, 0);
+
+			if(account != null) {
 				account.setIsDeleted(1);
 				msg = "Account " + username + " is successfully deleted!";
 			}

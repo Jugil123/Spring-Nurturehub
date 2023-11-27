@@ -12,4 +12,5 @@ import com.appdev.techno.ie.nurturehub.Entity.RecipientEntity;
 public interface AccountRepository extends JpaRepository<AccountEntity, Integer> {
 	AccountEntity findByUsername(String username);
 	void deleteByUsername(String username);
+	AccountEntity findByUsernameAndIsDeleted(String username, int isDeleted);
 }

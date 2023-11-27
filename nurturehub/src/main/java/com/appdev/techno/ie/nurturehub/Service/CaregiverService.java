@@ -32,7 +32,7 @@ public class CaregiverService {
 	//C - Create or insert caregiver record in tblcaregiver
 	public CaregiverEntity insertCaregiver(CaregiverEntity caregiver) {
 	    // Check if the username already exists in the AccountEntity
-	    AccountEntity existingAccount = arepo.findByUsername(caregiver.getUsername());
+	    AccountEntity existingAccount = arepo.findByUsernameAndIsDeleted(caregiver.getUsername(), 0);
 	    if (existingAccount != null) {
 	        // Handle the case where the username already exists
 	        // For example, you might throw an exception or return null
