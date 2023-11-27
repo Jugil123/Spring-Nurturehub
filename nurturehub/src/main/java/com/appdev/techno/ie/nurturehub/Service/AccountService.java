@@ -36,7 +36,7 @@ public class AccountService {
 			AccountEntity account = new AccountEntity();
 			try {
 				//1.)search the id number of account that will be updated
-				account = arepo.findByUsername(username);
+				account = arepo.findByUsernameAndIsDeleted(username,0);
 				
 			    //2.) update the record
 				account.setPassword(newAccountDetails.getPassword());
