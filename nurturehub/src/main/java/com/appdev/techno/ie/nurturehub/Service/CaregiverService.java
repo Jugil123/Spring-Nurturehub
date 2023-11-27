@@ -47,7 +47,7 @@ public class CaregiverService {
 	
 	//R - read all records in tblcaregiver
 	public List<CaregiverEntity> getAllCaregivers(){
-		return crepo.findAll();
+		return crepo.findByIsDeleted(0);
 	}
 	
 	//U - update a caregiver

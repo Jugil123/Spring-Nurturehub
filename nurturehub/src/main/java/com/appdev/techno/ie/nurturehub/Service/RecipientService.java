@@ -48,7 +48,7 @@ public class RecipientService {
 	
 	//R - read all records in tblrecipient
 	public List<RecipientEntity> getAllRecipients(){
-		return rrepo.findAll();
+		return rrepo.findByIsDeleted(0);
 	}
 	
 	//U - update a recipient
