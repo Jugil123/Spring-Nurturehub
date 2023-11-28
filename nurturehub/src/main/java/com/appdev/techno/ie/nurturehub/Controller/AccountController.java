@@ -1,6 +1,7 @@
 package com.appdev.techno.ie.nurturehub.Controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -54,7 +55,7 @@ public class AccountController {
 	}
 	
 	@PostMapping("/login")
-	 public int login(@RequestBody LoginRequest loginRequest) {
+	 public Map<String, Object> login(@RequestBody LoginRequest loginRequest) {
 		return aserv.login(loginRequest);
    }
   

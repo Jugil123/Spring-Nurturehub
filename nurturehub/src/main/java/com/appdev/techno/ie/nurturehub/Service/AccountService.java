@@ -1,6 +1,8 @@
 package com.appdev.techno.ie.nurturehub.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 
 import javax.transaction.Transactional;
@@ -9,9 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.appdev.techno.ie.nurturehub.Entity.AccountEntity;
+import com.appdev.techno.ie.nurturehub.Entity.AdminEntity;
+import com.appdev.techno.ie.nurturehub.Entity.CaregiverEntity;
 import com.appdev.techno.ie.nurturehub.Entity.RecipientEntity;
 import com.appdev.techno.ie.nurturehub.Methods.LoginRequest;
 import com.appdev.techno.ie.nurturehub.Repository.AccountRepository;
+import com.appdev.techno.ie.nurturehub.Repository.AdminRepository;
+import com.appdev.techno.ie.nurturehub.Repository.CaregiverRepository;
 import com.appdev.techno.ie.nurturehub.Repository.RecipientRepository;
 
 @Service
@@ -19,6 +25,15 @@ public class AccountService {
 
 		@Autowired
 		AccountRepository arepo;
+		
+		@Autowired
+		CaregiverRepository crepo;
+		
+		@Autowired
+		RecipientRepository rrepo;
+		
+		@Autowired
+		AdminRepository adminrepo;
 		
 		//C - Create or insert account record in tblaccount
 		public AccountEntity insertAccount(AccountEntity account) {
@@ -65,18 +80,46 @@ public class AccountService {
 			
 		}
 		
-		public int login(LoginRequest loginRequest) {
-			 String username = loginRequest.getUsername();
-		        String password = loginRequest.getPassword();
+		public Map<String, Object> login(LoginRequest loginRequest) {
+		    String username = loginRequest.getUsername();
+		    String password = loginRequest.getPassword();
 
-		        // Implement your custom logic to authenticate the user
-		        AccountEntity user = arepo.findByUsername(username);
+		    // Implement your custom logic to authenticate the user
+		    AccountEntity user = arepo.findByUsername(username);
 
-		        if (user != null && user.getPassword().equals(password) && user.getIsDeleted() != 1) {
-		            return user.getUserType();
-		        } else {
-		            return 0;
+		    if (user != null && user.getPassword().equals(password) && user.getIsDeleted() != 1) {
+		        int userType = user.getUserType();
+		        Map<String, Object> userInfo = new HashMap<>();
+
+		        switch (userType) {
+		            case 1: // Recipient
+		                RecipientEntity recipient = rrepo.findByUsername(username);
+		                userInfo.put("userType", userType);
+		                userInfo.put("userObject", recipient);
+		                return userInfo;
+
+		            case 2: // Caregiver
+		                CaregiverEntity caregiver = crepo.findByUsername(username);
+		                userInfo.put("userType", userType);
+		                userInfo.put("userObject", caregiver);
+		                return userInfo;
+
+		            case 3: // Admin
+		                AdminEntity admin = adminrepo.findByUsername(username);
+		                userInfo.put("userType", userType);
+		                userInfo.put("userObject", admin);
+		                return userInfo;
+
+		            default:
+		                return null; // Invalid userType
 		        }
-		 }
+		    } else {
+		        return null; // Invalid credentials or user not found
+		    }
+		}
+		
+		
+		
+
 	   
 }

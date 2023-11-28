@@ -18,22 +18,26 @@ public class AdminEntity {
 	
 	String firstname;
 	String lastname;	
+	String username;
 	String password;
 	String contact_information;
+	
 	private int isDeleted;
 	
 	public AdminEntity() {
 		super();
 	}
-
-	public AdminEntity(int adminId, String firstname, String lastname, String password, String contact_information) {
+	
+	public AdminEntity(int adminId, String firstname, String lastname, String username, String password,
+			String contact_information, int isDeleted) {
 		super();
 		this.adminId = adminId;
 		this.firstname = firstname;
 		this.lastname = lastname;
+		this.username = username;
 		this.password = password;
 		this.contact_information = contact_information;
-		this.isDeleted = 0;
+		this.isDeleted = isDeleted;
 	}
 
 	public int getAdminId() {
@@ -60,6 +64,14 @@ public class AdminEntity {
 		this.lastname = lastname;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	public String getPassword() {
 		return password;
 	}
@@ -75,6 +87,17 @@ public class AdminEntity {
 	public void setContact_information(String contact_information) {
 		this.contact_information = contact_information;
 	}
+
+	public int getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(int isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+	
+	
+	
 	
 	
 }
