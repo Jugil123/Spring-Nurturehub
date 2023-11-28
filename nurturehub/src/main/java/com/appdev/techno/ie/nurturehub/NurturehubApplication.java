@@ -8,7 +8,7 @@ public class NurturehubApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(NurturehubApplication.class, args);
-		System.out.println("Succcess");
+		System.out.println("Succcess!!!");
 	}
    
 }
