@@ -126,7 +126,7 @@ public class CaregiverService {
 	    }
 	 
 	 public ResponseEntity<List<CaregiverEntity>> searchCaregiver(String searchString) {
-		    List<CaregiverEntity> caregivers = crepo.findByCombinedName(searchString);
+		    List<CaregiverEntity> caregivers = crepo.findByCombinedNameAndIsDeleted(searchString, 0);
 
 		    if (!caregivers.isEmpty()) {
 		        return ResponseEntity.ok(caregivers);
