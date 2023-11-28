@@ -16,5 +16,6 @@ public interface CaregiverRepository extends JpaRepository<CaregiverEntity, Inte
 	@Query("SELECT c FROM CaregiverEntity c WHERE CONCAT(c.firstname, ' ', c.lastname) LIKE %:combinedName%")
     List<CaregiverEntity> findByCombinedName(@Param("combinedName") String combinedName);
 	List<CaregiverEntity> findByIsDeleted(int isDeleted);
+	CaregiverEntity findByUsernameAndIsDeleted(String username, int isDeleted);
 }
  

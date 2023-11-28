@@ -85,7 +85,7 @@ public class AccountService {
 		    String password = loginRequest.getPassword();
 
 		    // Implement your custom logic to authenticate the user
-		    AccountEntity user = arepo.findByUsername(username);
+		    AccountEntity user = arepo.findByUsernameAndIsDeleted(username, 0);
 
 		    if (user != null && user.getPassword().equals(password) && user.getIsDeleted() != 1) {
 		        int userType = user.getUserType();
@@ -93,13 +93,13 @@ public class AccountService {
 
 		        switch (userType) {
 		            case 1: // Recipient
-		                RecipientEntity recipient = rrepo.findByUsername(username);
+		                RecipientEntity recipient = rrepo.findByUsernameAndIsDeleted(username,0);
 		                userInfo.put("userType", userType);
 		                userInfo.put("userObject", recipient);
 		                return userInfo;
 
 		            case 2: // Caregiver
-		                CaregiverEntity caregiver = crepo.findByUsername(username);
+		                CaregiverEntity caregiver = crepo.findByUsernameAndIsDeleted(username,0);
 		                userInfo.put("userType", userType);
 		                userInfo.put("userObject", caregiver);
 		                return userInfo;

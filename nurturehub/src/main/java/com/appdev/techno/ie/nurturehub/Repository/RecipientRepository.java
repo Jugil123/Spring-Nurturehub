@@ -12,4 +12,5 @@ import com.appdev.techno.ie.nurturehub.Entity.RecipientEntity;
 public interface RecipientRepository extends JpaRepository<RecipientEntity, Integer> {
 	RecipientEntity findByUsername(String username);
 	List<RecipientEntity> findByIsDeleted(int isDeleted);
+	RecipientEntity findByUsernameAndIsDeleted(String username, int isDeleted);
 }
