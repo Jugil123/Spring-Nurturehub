@@ -28,6 +28,7 @@ public class RecipientEntity {
 	private String address;
 	private int age;
 	private int isDeleted;
+	private int isBooked;
 	
 	public RecipientEntity() {
 		super();
@@ -47,6 +48,7 @@ public class RecipientEntity {
 		this.address = address;
 		this.age = age;
 		this.isDeleted = 0;
+		this.isBooked = 0;
 	}
 
 	public int getRecipientId() {
@@ -135,6 +137,14 @@ public class RecipientEntity {
 
 	public void setIsDeleted(int isDeleted) {
 		this.isDeleted = isDeleted;
+	}
+
+	public int getIsBooked() {
+		return isBooked;
+	}
+
+	public void setIsBooked(int isBooked) {
+		this.isBooked = isBooked;
 	}
 	
 	

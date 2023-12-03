@@ -30,6 +30,7 @@ public class CaregiverEntity {
 	private String availability;
 	private double hourlyRate;
 	private int isDeleted;
+	private int isBooked;
 	
 	public CaregiverEntity() {
 		super();
@@ -52,6 +53,7 @@ public class CaregiverEntity {
 		this.availability = availability;
 		this.hourlyRate = hourlyRate;
 		this.isDeleted = 0;
+		this.isBooked = 0;
 	}
 
 	public int getCaregiverId() {
@@ -157,5 +159,15 @@ public class CaregiverEntity {
 	public void setIsDeleted(int isDeleted) {
 		this.isDeleted = isDeleted;
 	}
+
+	public int getIsBooked() {
+		return isBooked;
+	}
+
+	public void setIsBooked(int isBooked) {
+		this.isBooked = isBooked;
+	}
+	
+	
 	
 }
