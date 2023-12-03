@@ -21,6 +21,9 @@ public class BookingEntity {
 	
 	private String start_date;
 	private String end_date;
+	 
+	private String start_time;
+	private String end_time;
 	
 	private int isTerminated;
 
@@ -28,14 +31,17 @@ public class BookingEntity {
 		super();
 	}
 
-	public BookingEntity(int bookingId, String recipient, String caregiver, String start_date, String end_date) {
+	public BookingEntity(int bookingId, String recipient, String caregiver, String start_date, String end_date,
+			String start_time, String end_time, int isTerminated) {
 		super();
 		this.bookingId = bookingId;
 		this.recipient = recipient;
 		this.caregiver = caregiver;
 		this.start_date = start_date;
 		this.end_date = end_date;
-		this.isTerminated = 0;
+		this.start_time = start_time;
+		this.end_time = end_time;
+		this.isTerminated = isTerminated;
 	}
 
 	public int getBookingId() {
@@ -78,6 +84,22 @@ public class BookingEntity {
 		this.end_date = end_date;
 	}
 
+	public String getStart_time() {
+		return start_time;
+	}
+
+	public void setStart_time(String start_time) {
+		this.start_time = start_time;
+	}
+
+	public String getEnd_time() {
+		return end_time;
+	}
+
+	public void setEnd_time(String end_time) {
+		this.end_time = end_time;
+	}
+
 	public int getIsTerminated() {
 		return isTerminated;
 	}
@@ -85,6 +107,8 @@ public class BookingEntity {
 	public void setIsTerminated(int isTerminated) {
 		this.isTerminated = isTerminated;
 	}
+
+	
 	
 	
 }

@@ -113,7 +113,7 @@ public class CaregiverService {
 	        } else {
 	            return "Login Failed";
 	        }
-	 }
+	 } 
 	 
 	 public ResponseEntity<CaregiverEntity> getCaregiverById(int caregiverId) {
 		 CaregiverEntity caregiver = crepo.findById(caregiverId).orElse(null);
