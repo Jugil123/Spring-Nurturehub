@@ -1,6 +1,7 @@
 package com.appdev.techno.ie.nurturehub.Controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -46,6 +47,11 @@ public class BookingController {
 	@DeleteMapping("/deleteBooking/{bid}")
 	public String deleteBooking(@PathVariable int bid) {
 		return bserv.deleteBooking(bid);
+	}
+	
+	@GetMapping("/getAllBookingRequest/{username}")
+	public Map<String, Object> getAllBookingRequest(@PathVariable String username) {
+		return bserv.getAllBookingRequest(username);
 	}
 	
 	
