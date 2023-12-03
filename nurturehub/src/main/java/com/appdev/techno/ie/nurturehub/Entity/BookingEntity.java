@@ -41,7 +41,7 @@ public class BookingEntity {
 		this.end_date = end_date;
 		this.start_time = start_time;
 		this.end_time = end_time;
-		this.isTerminated = isTerminated;
+		this.isTerminated = 0;
 	}
 
 	public int getBookingId() {
