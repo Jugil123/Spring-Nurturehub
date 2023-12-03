@@ -67,7 +67,6 @@ public class CaregiverService {
 			caregiver.setContact_information(newCaregiverDetails.getContact_information());
 			caregiver.setAddress(newCaregiverDetails.getAddress());
 			caregiver.setSpecializations(newCaregiverDetails.getSpecializations());
-			caregiver.setAvailability(newCaregiverDetails.getAvailability());
 			caregiver.setHourlyRate(newCaregiverDetails.getHourlyRate());
 			
 		}catch(NoSuchElementException ex) {

@@ -27,7 +27,6 @@ public class CaregiverEntity {
 	private String contact_information;
 	private String address;
 	private String specializations;
-	private String availability;
 	private double hourlyRate;
 	private int isDeleted;
 	private int isBooked;
@@ -38,7 +37,7 @@ public class CaregiverEntity {
 
 	public CaregiverEntity(int caregiverId, String firstname, String lastname, String username, String password,
 			String birth_date, String gender, String contact_information, String address, String specializations,
-			String availability, double hourlyRate) {
+			double hourlyRate) {
 		super();
 		this.caregiverId = caregiverId;
 		this.firstname = firstname;
@@ -50,7 +49,6 @@ public class CaregiverEntity {
 		this.contact_information = contact_information;
 		this.address = address;
 		this.specializations = specializations;
-		this.availability = availability;
 		this.hourlyRate = hourlyRate;
 		this.isDeleted = 0;
 		this.isBooked = 0;
@@ -134,14 +132,6 @@ public class CaregiverEntity {
 
 	public void setSpecializations(String specializations) {
 		this.specializations = specializations;
-	}
-
-	public String getAvailability() {
-		return availability;
-	}
-
-	public void setAvailability(String availability) {
-		this.availability = availability;
 	}
 
 	public double getHourlyRate() {
