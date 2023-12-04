@@ -33,7 +33,7 @@ public class RecipientEntity {
 	public RecipientEntity() {
 		super();
 	}
-
+ 
 	public RecipientEntity(int recipientId, String firstname, String lastname, String username, String password,
 			String birth_date, String gender, String contact_info, String address, int age) {
 		super();

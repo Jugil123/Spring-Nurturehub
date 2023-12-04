@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.appdev.techno.ie.nurturehub.Entity.BookingEntity;
+import com.appdev.techno.ie.nurturehub.Entity.CaregiverEntity;
 import com.appdev.techno.ie.nurturehub.Entity.RecipientEntity;
 import com.appdev.techno.ie.nurturehub.Repository.BookingRepository;
 import com.appdev.techno.ie.nurturehub.Repository.RecipientRepository;
@@ -56,22 +57,33 @@ public class BookingService {
 	
 	public String deleteBooking(int bid) {
 		String msg = "";
-		
-		if(bookingRepository.findById(bid) != null) {
-			bookingRepository.deleteById(bid);
-			msg = "Booking " + bid + " is successfully deleted!";
-		}
-		else
-			msg = "Booking " + bid + " does not exist";
-		return msg;
+
+	    if (bookingRepository.findById(bid).isPresent()) {
+	        // Get caregiver by id
+	    	BookingEntity booking = bookingRepository.findById(bid).get();
+	        
+	     // Check if caregiver is already deleted
+	        if (booking.getIsTerminated() == 1) {
+	            msg = "Caregiver " + bid + " is already deleted!";
+	        } else {
+	            // Set isDeleted to 1 instead of physically deleting
+	        	booking.setIsTerminated(1);
+	            bookingRepository.save(booking);
+	            msg = "Booking " + bid + " is successfully marked as deleted!";
+	        }
+	    } else {
+	        msg = "Booking " + bid + " does not exist";
+	    }
+
+	    return msg;
 		
 	}
 	
 	public Map<String, Object> getAllBookingRequest(String username) {
 	    Map<String, Object> result = new HashMap<>();
 
-	    // Find bookings by caregiver's username
-	    List<BookingEntity> bookings = bookingRepository.findByCaregiver(username);
+	    // Find bookings by caregiver's username and isTerminated == 0
+	    List<BookingEntity> bookings = bookingRepository.findByCaregiverAndIsTerminated(username, 0);
 
 	    // Check if there are bookings
 	    if (!bookings.isEmpty()) {
