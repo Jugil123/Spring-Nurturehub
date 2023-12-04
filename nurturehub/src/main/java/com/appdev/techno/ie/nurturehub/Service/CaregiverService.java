@@ -133,4 +133,22 @@ public class CaregiverService {
 		        return ResponseEntity.notFound().build();
 		    }
 	 }
+	 
+	 @SuppressWarnings("finally")
+		public CaregiverEntity updateCaregiverBooked(int cid, CaregiverEntity newCaregiverBooked) {
+		 CaregiverEntity caregiver = new CaregiverEntity();
+				try {
+					//1.)search the id number of recipient that will be updated
+					caregiver = crepo.findById(cid).get();
+					  
+				    //2.) update the record
+					caregiver.setIsBooked(newCaregiverBooked.getIsBooked());
+					   
+					
+				}catch(NoSuchElementException ex) {
+					throw new NoSuchElementException("Recipient "+ cid + " does not exist!");
+				}finally {
+					return crepo.save(caregiver);
+				}
+			}
 }

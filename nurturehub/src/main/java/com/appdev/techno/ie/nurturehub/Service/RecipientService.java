@@ -58,7 +58,7 @@ public class RecipientService {
 		try {
 			//1.)search the id number of recipient that will be updated
 			recipient = rrepo.findById(rid).get();
-			
+			  
 		    //2.) update the record
 			recipient.setFirstname(newRecipientDetails.getFirstname());
 			recipient.setLastname(newRecipientDetails.getLastname());
@@ -125,4 +125,23 @@ public class RecipientService {
 	            return ResponseEntity.notFound().build();
 	        }
 	    }
+	 
+	 
+	 @SuppressWarnings("finally")
+	public RecipientEntity updateRecipientBooked(int rid, RecipientEntity newRecipientBooked) {
+			RecipientEntity recipient = new RecipientEntity();
+			try {
+				//1.)search the id number of recipient that will be updated
+				recipient = rrepo.findById(rid).get();
+				  
+			    //2.) update the record
+				recipient.setIsBooked(newRecipientBooked.getIsBooked());
+				   
+				
+			}catch(NoSuchElementException ex) {
+				throw new NoSuchElementException("Recipient "+ rid + " does not exist!");
+			}finally {
+				return rrepo.save(recipient);
+			}
+		}
 }

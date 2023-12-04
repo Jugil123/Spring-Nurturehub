@@ -68,4 +68,9 @@ public class CaregiverController {
 	public ResponseEntity<List<CaregiverEntity>> searchCaregiver(@RequestParam String searchString) {
 		return cserv.searchCaregiver(searchString);
 	}
+	 
+	@PutMapping("/updateCaregiverBooked")
+	public CaregiverEntity updateCaregiverBooked(@RequestParam int cid,@RequestBody CaregiverEntity newCaregiverDetails){
+		return cserv.updateCaregiverBooked(cid, newCaregiverDetails);
+	}
 }

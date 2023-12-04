@@ -60,9 +60,14 @@ public class RecipientController {
 	 public String login(@RequestBody LoginRequest loginRequest) {
 		return rserv.login(loginRequest);
     }
-	
+	 
 	 @GetMapping("/getRecipientById/{rid}")
 	 public ResponseEntity<RecipientEntity> getRecipientById(@PathVariable int rid){
 		 return rserv.getRecipientById(rid);
 	 }
+	 
+	 @PutMapping("/updateRecipientBooked")
+		public RecipientEntity updateRecipientBooked(@RequestParam int rid,@RequestBody RecipientEntity newRecipientDetails){
+			return rserv.updateRecipientBooked(rid, newRecipientDetails);
+		}
 }
