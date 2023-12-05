@@ -1,10 +1,14 @@
 package com.appdev.techno.ie.nurturehub.Entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="tblfeedback")
 public class FeedBackEntity {
 
 	@Id
