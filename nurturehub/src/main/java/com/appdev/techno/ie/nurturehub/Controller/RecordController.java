@@ -50,7 +50,7 @@ public class RecordController {
 		return rserv.deleteRecord(rid);
 	}
 	
-	@GetMapping("/getAllRecords{recipient}")
+	@GetMapping("/getRecordByRecipient/{recipient}")
 	public RecordEntity getRecordByRecipient(@PathVariable String recipient){
 		return rserv.getRecordByRecipient(recipient);
 	}
