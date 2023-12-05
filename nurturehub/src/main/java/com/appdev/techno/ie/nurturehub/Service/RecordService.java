@@ -27,11 +27,11 @@ public class RecordService {
 	}
 	
 	@SuppressWarnings("finally")
-	public RecordEntity updateRecord(int rid, RecordEntity newRecordDetails) {
+	public RecordEntity updateRecord(String recipient, RecordEntity newRecordDetails) {
 		RecordEntity record = new RecordEntity();
 		try {
 			//1.)search the id number of student that will be updated
-			record = rrepo.findById(rid).get();
+			record = rrepo.findByRecipient(recipient);
 			
 		    //2.) update the record
 			record.setAllergies(newRecordDetails.getAllergies());
@@ -41,7 +41,7 @@ public class RecordService {
 			record.setFamily_history(newRecordDetails.getFamily_history());
 			
 		}catch(NoSuchElementException ex) {
-			throw new NoSuchElementException("Record "+ rid + " does not exist!");
+			throw new NoSuchElementException("Record "+ recipient + " does not exist!");
 		}finally {
 			return rrepo.save(record);
 		}

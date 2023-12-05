@@ -40,8 +40,8 @@ public class RecordController {
 	 
 	//U - Update a recipient record
 	@PutMapping("/updateRecord")
-	public RecordEntity updateRecord(@RequestParam int rid,@RequestBody RecordEntity newRecordDetails){
-		return rserv.updateRecord(rid, newRecordDetails);
+	public RecordEntity updateRecord(@RequestParam String recipient,@RequestBody RecordEntity newRecordDetails){
+		return rserv.updateRecord(recipient, newRecordDetails);
 	}
 	
 	//D - Delete a recipient record
