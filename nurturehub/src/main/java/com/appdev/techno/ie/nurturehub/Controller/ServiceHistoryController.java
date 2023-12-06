@@ -1,5 +1,27 @@
 package com.appdev.techno.ie.nurturehub.Controller;
 
-public class ServiceHistoryController {
+import java.util.List;
 
-}
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.appdev.techno.ie.nurturehub.Entity.ServiceHistoryEntity;
+import com.appdev.techno.ie.nurturehub.Service.ServiceHistoryService;
+
+@RestController
+@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/serviceHistory")
+public class ServiceHistoryController {
+	
+	 @Autowired
+	    ServiceHistoryService shserv;
+
+	    @GetMapping("/getAllServiceHistory")
+	    public List<ServiceHistoryEntity> getAllServiceHistory(@PathVariable String recipient) {
+	        return shserv.viewServiceHistory(recipient);
+	    }
+	}
