@@ -36,9 +36,7 @@ public class RecipientService {
 	    // Check if the username already exists in the AccountEntity
 	    AccountEntity existingAccount = arepo.findByUsernameAndIsDeleted(recipient.getUsername(), 0);
 	    if (existingAccount != null) {
-	        // Handle the case where the username already exists
-	        // For example, you might throw an exception or return null
-	        // depending on how you want to handle this situation.
+
 	        throw new MyCustomException("Username already exists");
 	    }
 
