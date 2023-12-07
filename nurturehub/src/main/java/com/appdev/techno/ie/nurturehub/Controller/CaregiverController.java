@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.appdev.techno.ie.nurturehub.Entity.CaregiverEntity;
 import com.appdev.techno.ie.nurturehub.Entity.RecipientEntity;
@@ -28,7 +29,7 @@ public class CaregiverController {
 
 	@Autowired
 	CaregiverService cserv;
-	
+	 
 	
 	//C - Create a recipient record
 	@PostMapping("/insertCaregiver")
@@ -73,4 +74,15 @@ public class CaregiverController {
 	public CaregiverEntity updateCaregiverBooked(@RequestParam int cid,@RequestBody CaregiverEntity newCaregiverDetails){
 		return cserv.updateCaregiverBooked(cid, newCaregiverDetails);
 	}
+	
+	 @PostMapping("/caregivers/{caregiverId}/profile-picture")
+	    public ResponseEntity<String> updateProfilePicture(
+	            @RequestParam("file") MultipartFile file,
+	            @PathVariable int caregiverId) {
+	        
+	        // Implement the logic to save/update the profile picture in the caregiver service
+		 cserv.updateProfilePicture(caregiverId, file);
+
+	        return ResponseEntity.ok("Profile picture updated successfully");
+	    }
 }
