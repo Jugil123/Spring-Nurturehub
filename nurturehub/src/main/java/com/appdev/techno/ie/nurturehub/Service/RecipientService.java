@@ -1,5 +1,6 @@
 package com.appdev.techno.ie.nurturehub.Service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.appdev.techno.ie.nurturehub.Entity.AccountEntity;
 import com.appdev.techno.ie.nurturehub.Entity.CaregiverEntity;
@@ -141,5 +143,20 @@ public class RecipientService {
 			}finally {
 				return rrepo.save(recipient);
 			}
+		}
+	 
+	 public void updateProfilePicture(int recipientId, MultipartFile file) {
+		 RecipientEntity recipient = rrepo.findById(recipientId)
+		        .orElseThrow(() -> new NoSuchElementException("Recipient " + recipientId + " does not exist!"));
+
+		    // Convert MultipartFile to byte array
+		    try {
+		    	recipient.setProfilePicture(file.getBytes());
+		    } catch (IOException e) {
+		        // Handle the exception
+		        throw new RuntimeException("Failed to update profile picture", e);
+		    }
+
+		    rrepo.save(recipient);
 		}
 }
