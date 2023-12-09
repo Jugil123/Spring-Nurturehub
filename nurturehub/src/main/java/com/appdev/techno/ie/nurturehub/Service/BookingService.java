@@ -34,6 +34,17 @@ public class BookingService {
 		return bookingRepository.findAll();
 	}
 	
+	public List<BookingEntity> getAllBookingsByUsername(String caregiver, String recipient){
+		List<BookingEntity> bookingRecords = bookingRepository.findBookingByCaregiverAndRecipientAndIsTerminated(caregiver, recipient, 0);
+		
+		if(bookingRecords != null) {
+			
+			return bookingRecords;
+		}
+		
+		return null;
+	}
+	
 	@SuppressWarnings("finally")
 	public BookingEntity updateBooking(int bid, BookingEntity newBookingDetails) {
 		BookingEntity booking = new BookingEntity();

@@ -12,4 +12,6 @@ import com.appdev.techno.ie.nurturehub.Entity.CaregiverEntity;
 public interface BookingRepository extends JpaRepository<BookingEntity, Integer> {
 	 @Query("SELECT b FROM BookingEntity b WHERE b.caregiver = :caregiver AND b.isTerminated = :isTerminated")
 	 List<BookingEntity> findByCaregiverAndIsTerminated(@Param("caregiver") String caregiver, @Param("isTerminated") int isTerminated);
+	 
+	 List<BookingEntity> findBookingByCaregiverAndRecipientAndIsTerminated(String caregiver, String recipient, int is_terminated);
 }
