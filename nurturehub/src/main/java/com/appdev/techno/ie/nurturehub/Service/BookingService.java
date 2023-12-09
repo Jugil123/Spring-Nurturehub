@@ -55,7 +55,7 @@ public class BookingService {
 		}
 	}
 	
-	public String deleteBooking(int bid) {
+	public String terminateBooking(int bid) {
 		String msg = "";
 
 	    if (bookingRepository.findById(bid).isPresent()) {
@@ -64,7 +64,7 @@ public class BookingService {
 	        
 	     // Check if caregiver is already deleted
 	        if (booking.getIsTerminated() == 1) {
-	            msg = "Caregiver " + bid + " is already deleted!";
+	            msg = "Booking " + bid + " is already deleted!";
 	        } else {
 	            // Set isDeleted to 1 instead of physically deleting
 	        	booking.setIsTerminated(1);
@@ -76,6 +76,19 @@ public class BookingService {
 	    }
 
 	    return msg;
+		
+	}
+	
+	public String deleteBooking(int bid) {
+		String msg = "";
+		
+		if(bookingRepository.findById(bid) != null ) {
+			bookingRepository.deleteById(bid);
+			msg = "Booking " + bid + " is successfuly deleted!";
+		}else 
+			msg = "Booking "+ bid + "does not exist.";
+			
+		return msg;
 		
 	}
 	

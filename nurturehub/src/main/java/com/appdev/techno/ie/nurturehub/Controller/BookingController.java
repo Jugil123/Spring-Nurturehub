@@ -44,6 +44,11 @@ public class BookingController {
 		return bserv.updateBooking(bid, newBookingDetails);
 	}
 	
+	@DeleteMapping("/terminateBooking/{bid}")
+	public String terminateBooking(@PathVariable int bid) {
+		return bserv.terminateBooking(bid);
+	}
+	
 	@DeleteMapping("/deleteBooking/{bid}")
 	public String deleteBooking(@PathVariable int bid) {
 		return bserv.deleteBooking(bid);
