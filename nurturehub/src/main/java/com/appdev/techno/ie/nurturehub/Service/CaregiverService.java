@@ -1,11 +1,13 @@
 package com.appdev.techno.ie.nurturehub.Service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.appdev.techno.ie.nurturehub.Entity.AccountEntity;
 import com.appdev.techno.ie.nurturehub.Entity.CaregiverEntity;
@@ -151,4 +153,20 @@ public class CaregiverService {
 					return crepo.save(caregiver);
 				}
 			}
+	 
+	 
+	 public void updateProfilePicture(int caregiverId, MultipartFile file) {
+		    CaregiverEntity caregiver = crepo.findById(caregiverId)
+		        .orElseThrow(() -> new NoSuchElementException("Caregiver " + caregiverId + " does not exist!"));
+
+		    // Convert MultipartFile to byte array
+		    try {
+		        caregiver.setProfilePicture(file.getBytes());
+		    } catch (IOException e) {
+		        // Handle the exception
+		        throw new RuntimeException("Failed to update profile picture", e);
+		    }
+
+		    crepo.save(caregiver);
+		}
 }

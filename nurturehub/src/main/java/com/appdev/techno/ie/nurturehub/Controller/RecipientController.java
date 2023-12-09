@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.appdev.techno.ie.nurturehub.Entity.RecipientEntity;
 import com.appdev.techno.ie.nurturehub.Methods.LoginRequest;
@@ -70,4 +71,15 @@ public class RecipientController {
 		public RecipientEntity updateRecipientBooked(@RequestParam int rid,@RequestBody RecipientEntity newRecipientDetails){
 			return rserv.updateRecipientBooked(rid, newRecipientDetails);
 		}
+	 
+	 @PostMapping("/recipients/{recipientId}/profile-picture")
+	    public ResponseEntity<String> updateProfilePicture(
+	            @RequestParam("file") MultipartFile file,
+	            @PathVariable int recipientId) {
+	        
+	        // Implement the logic to save/update the profile picture in the recipient service
+		 rserv.updateProfilePicture(recipientId, file);
+
+	        return ResponseEntity.ok("Profile picture updated successfully");
+	    }
 }

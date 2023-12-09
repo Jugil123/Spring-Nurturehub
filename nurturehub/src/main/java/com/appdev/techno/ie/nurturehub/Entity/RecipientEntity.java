@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
   
 @Entity
@@ -30,12 +31,16 @@ public class RecipientEntity {
 	private int isDeleted;
 	private int isBooked;
 	
+	@Lob
+    @Column(name = "profile_picture")
+    private byte[] profilePicture;
+	
 	public RecipientEntity() {
 		super();
 	}
  
 	public RecipientEntity(int recipientId, String firstname, String lastname, String username, String password,
-			String birth_date, String gender, String contact_info, String address, int age) {
+			String birth_date, String gender, String contact_info, String address, int age, byte[] profilePicture) {
 		super();
 		this.recipientId = recipientId;
 		this.firstname = firstname;
@@ -49,6 +54,7 @@ public class RecipientEntity {
 		this.age = age;
 		this.isDeleted = 0;
 		this.isBooked = 0;
+		this.profilePicture = profilePicture;
 	}
 
 	public int getRecipientId() {
@@ -145,6 +151,14 @@ public class RecipientEntity {
 
 	public void setIsBooked(int isBooked) {
 		this.isBooked = isBooked;
+	}
+	
+	public byte[] getProfilePicture() {
+		return profilePicture;
+	}
+
+	public void setProfilePicture(byte[] profilePicture) {
+		this.profilePicture = profilePicture;
 	}
 	
 	
