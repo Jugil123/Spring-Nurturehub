@@ -117,7 +117,7 @@ public class BookingService {
 	        // Iterate through each booking
 	        for (BookingEntity booking : bookings) {
 	            // Retrieve the recipient by username for each booking
-	            RecipientEntity recipient = recipientRepository.findByUsername(booking.getRecipient());
+	            RecipientEntity recipient = recipientRepository.findByUsernameAndIsDeleted(booking.getRecipient(), 0);
 
 	            // Create a map to store booking details along with recipient
 	            Map<String, Object> bookingMap = new HashMap<>();
