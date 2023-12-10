@@ -13,6 +13,10 @@ public class ServiceHistoryService {
 	
 	@Autowired
     ServiceHistoryRepository shrepo;
+	
+	public ServiceHistoryEntity insertServiceHistory(ServiceHistoryEntity serviceHistory) {
+        return shrepo.save(serviceHistory);
+    }
 
     public List<ServiceHistoryEntity> viewServiceHistory(String recipient) {
         return shrepo.findByRecipient(recipient);
