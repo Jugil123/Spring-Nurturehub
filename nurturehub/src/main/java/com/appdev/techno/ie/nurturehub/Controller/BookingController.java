@@ -44,6 +44,11 @@ public class BookingController {
 		return bserv.getAllBookingsByUsername(caregiver, recipient);
 	}
 	
+	@GetMapping("/getAllBookingsByRecipient")
+	List<BookingEntity> getAllBookingsByRecipient(@RequestParam String recipient){
+		return bserv.getAllBookingsByRecipient(recipient);
+	}
+	
 	@PutMapping("/updateBooking")
 	public BookingEntity updateBooking(@RequestParam int bid,@RequestBody BookingEntity newBookingDetails){
 		return bserv.updateBooking(bid, newBookingDetails);

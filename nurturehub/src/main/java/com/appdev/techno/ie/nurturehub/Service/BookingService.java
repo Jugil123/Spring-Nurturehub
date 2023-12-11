@@ -45,6 +45,16 @@ public class BookingService {
 		return null;
 	}
 	
+	public List<BookingEntity> getAllBookingsByRecipient(String recipient){
+		List<BookingEntity> bookingRecords = bookingRepository.findBookingByRecipientAndIsTerminated(recipient, 0);
+		
+		if(bookingRecords != null) {
+			return bookingRecords;
+		}
+
+		return null;
+	}
+	
 	@SuppressWarnings("finally")
 	public BookingEntity updateBooking(int bid, BookingEntity newBookingDetails) {
 		BookingEntity booking = new BookingEntity();
