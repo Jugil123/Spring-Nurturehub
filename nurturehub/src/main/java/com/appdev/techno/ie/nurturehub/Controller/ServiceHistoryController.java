@@ -27,7 +27,7 @@ public class ServiceHistoryController {
 	        return shserv.insertServiceHistory(serviceHistory);
 	    }
 	 
-	    @GetMapping("/getAllServiceHistory")
+	    @GetMapping("/getAllServiceHistory/{caregiver}")
 	    public List<ServiceHistoryEntity> getAllServiceHistory(@PathVariable String caregiver) {
 	        return shserv.getAllServiceHistory(caregiver);
 	    }
