@@ -9,6 +9,6 @@ import com.appdev.techno.ie.nurturehub.Entity.ServiceHistoryEntity;
 @Repository
 public interface ServiceHistoryRepository extends JpaRepository<ServiceHistoryEntity, Integer>{
 	
-	List<ServiceHistoryEntity> findByRecipient(String recipient);
+	 List<ServiceHistoryEntity> findByCaregiver(String caregiver);
     
 }
