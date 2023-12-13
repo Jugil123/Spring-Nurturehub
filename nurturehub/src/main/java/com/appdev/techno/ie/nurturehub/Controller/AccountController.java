@@ -58,5 +58,10 @@ public class AccountController {
 	 public Map<String, Object> login(@RequestBody LoginRequest loginRequest) {
 		return aserv.login(loginRequest);
    }
+	
+	@GetMapping("/searchAccount")
+	public List<AccountEntity> findAccount(@RequestParam String searchString){
+		return aserv.findAccount(searchString);
+	}
   
 }

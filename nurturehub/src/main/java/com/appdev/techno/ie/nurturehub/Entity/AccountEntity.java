@@ -18,6 +18,8 @@ public class AccountEntity {
 	
 	private String username;
 	
+	private String firstname;
+	private String lastname;
 	private String password;
 	private int userType;
 	private int isDeleted;
@@ -26,10 +28,12 @@ public class AccountEntity {
 		super();
 	}
 
-	public AccountEntity(int id, String username, String password, int userType) {
+	public AccountEntity(int id, String firstname, String lastname, String username, String password, int userType) {
 		super();
 		this.id = id;
 		this.username = username;
+		this.firstname = firstname;
+		this.lastname = lastname;
 		this.password = password;
 		this.userType = userType;
 		this.isDeleted = 0;
@@ -73,6 +77,22 @@ public class AccountEntity {
 
 	public void setIsDeleted(int isDeleted) {
 		this.isDeleted = isDeleted;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
 	

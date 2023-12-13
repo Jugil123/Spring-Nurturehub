@@ -119,7 +119,13 @@ public class AccountService {
 		}
 		
 		
-		
-
-	   
+		public List<AccountEntity> findAccount(String searchString) {
+			List<AccountEntity> account = arepo.findByCombinedNameAndIsDeleted(searchString, 0);
+			
+			if(account != null) {
+				return account;
+			}
+			
+			return null;
+		}
 }
