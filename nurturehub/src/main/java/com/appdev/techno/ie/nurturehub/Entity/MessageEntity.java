@@ -23,7 +23,7 @@ public class MessageEntity {
 	private String receiver; 
 	
 	private String message;
-	private String isDeleted;
+	private int isDeleted;
 	
 	public MessageEntity() {
 		super();
@@ -36,6 +36,7 @@ public class MessageEntity {
 		this.sender = sender;
 		this.receiver = receiver;
 		this.message = message;
+		this.isDeleted = 0;
 	}
 
 	public int getMessageId() {
@@ -78,11 +79,11 @@ public class MessageEntity {
 		this.message = message;
 	}
 
-	public String getIsDeleted() {
+	public int getIsDeleted() {
 		return isDeleted;
 	}
 
-	public void setIsDeleted(String isDeleted) {
+	public void setIsDeleted(int isDeleted) {
 		this.isDeleted = isDeleted;
 	}
 
