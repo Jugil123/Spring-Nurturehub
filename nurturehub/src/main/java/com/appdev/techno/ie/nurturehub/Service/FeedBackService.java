@@ -21,4 +21,12 @@ public class FeedBackService {
     public List<FeedBackEntity> viewRecipientFeedback(int recipientId) {
         return fbrepo.findByRecipientId(recipientId);
     }
+    
+    public List<FeedBackEntity> getFeedBackByCaregiver(int caregiverId){
+    	List<FeedBackEntity> feedback = fbrepo.findByCaregiverIdAndIsDeleted(caregiverId, 0);
+    	if(feedback != null) {
+    		return feedback;
+    	}
+    	return null;
+    }
 }

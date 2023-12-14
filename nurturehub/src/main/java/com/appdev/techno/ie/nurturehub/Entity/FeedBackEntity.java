@@ -27,6 +27,8 @@ public class FeedBackEntity {
 
     @Column(name = "rating")
     private int rating;
+    
+    private int isDeleted;
 
 
     public FeedBackEntity() {}
@@ -36,6 +38,7 @@ public class FeedBackEntity {
         this.recipientId = recipientId;
         this.feedback = feedback;
         this.rating = rating;
+        this.isDeleted = 0;
     }
 
 
@@ -78,4 +81,14 @@ public class FeedBackEntity {
     public void setRating(int rating) {
         this.rating = rating;
     }
+
+	public int getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(int isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+    
+    
 }

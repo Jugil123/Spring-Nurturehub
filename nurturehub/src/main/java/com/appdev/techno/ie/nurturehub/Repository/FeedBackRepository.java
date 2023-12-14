@@ -8,4 +8,5 @@ import java.util.List;
 public interface FeedBackRepository extends JpaRepository<FeedBackEntity, Integer> {
 
     List<FeedBackEntity> findByRecipientId(int recipientId);
+    List<FeedBackEntity> findByCaregiverIdAndIsDeleted(int recipientId, int isDeleted);
 }
