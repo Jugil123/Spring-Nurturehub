@@ -63,5 +63,9 @@ public class AccountController {
 	public List<AccountEntity> findAccount(@RequestParam String searchString){
 		return aserv.findAccount(searchString);
 	}
-  
+	
+	@GetMapping("/searchAccountUsername")
+	public AccountEntity findAccountByUsername(@RequestParam String username){
+		return aserv.findAccountByUsername(username);
+	}
 }

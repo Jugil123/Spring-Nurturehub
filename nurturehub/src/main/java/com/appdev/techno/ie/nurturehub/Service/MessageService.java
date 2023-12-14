@@ -19,7 +19,17 @@ public class MessageService {
 	}
 	
 	public List<MessageEntity> getMessagesByMessageKey(String messageKey){
-		List<MessageEntity> messages = messagerepo.findByMessageKey(messageKey);
+		List<MessageEntity> messages = messagerepo.findByMessageKeyAndIsDeleted(messageKey,0);
+		
+		if(messages != null) {
+			return messages;
+		}
+		
+		return null;
+	}
+	
+	public List<MessageEntity> getMessageByPartialMessageKey(String messageKey){
+		List<MessageEntity> messages = messagerepo.findByPartialMessageKeyAndIsDeleted(messageKey, 0);
 		
 		if(messages != null) {
 			return messages;

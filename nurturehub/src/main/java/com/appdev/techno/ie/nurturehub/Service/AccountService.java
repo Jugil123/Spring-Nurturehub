@@ -128,4 +128,14 @@ public class AccountService {
 			
 			return null;
 		}
+		
+		public AccountEntity findAccountByUsername(String username){
+			AccountEntity account = arepo.findByUsernameAndIsDeleted(username, 0);
+			
+			if(account != null) {
+				return account;
+			}
+			
+			return null;
+		}
 }

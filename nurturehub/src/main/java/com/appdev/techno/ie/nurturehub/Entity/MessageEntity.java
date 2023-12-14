@@ -20,7 +20,9 @@ public class MessageEntity {
 	private String messageKey;
 	
 	private String sender;
-	private String receiver; 
+	private String receiver;
+	private String senderUsername;
+	private String receiverUsername;
 	
 	private String message;
 	private int isDeleted;
@@ -29,13 +31,16 @@ public class MessageEntity {
 		super();
 	}
 
-	public MessageEntity(int messageId, String messageKey, String sender, String receiver, String message) {
+	public MessageEntity(int messageId, String messageKey, String sender, String receiver, String message, String senderUsername,
+			String receiverUsername) {
 		super();
 		this.messageId = messageId;
 		this.messageKey = messageKey;
 		this.sender = sender;
 		this.receiver = receiver;
 		this.message = message;
+		this.senderUsername = senderUsername;
+		this.receiverUsername = receiverUsername;
 		this.isDeleted = 0;
 	}
 
@@ -77,6 +82,22 @@ public class MessageEntity {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public String getSenderUsername() {
+		return senderUsername;
+	}
+
+	public void setSenderUsername(String senderUsername) {
+		this.senderUsername = senderUsername;
+	}
+
+	public String getReceiverUsername() {
+		return receiverUsername;
+	}
+
+	public void setReceiverUsername(String receiverUsername) {
+		this.receiverUsername = receiverUsername;
 	}
 
 	public int getIsDeleted() {

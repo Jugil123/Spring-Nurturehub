@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.appdev.techno.ie.nurturehub.Entity.MessageEntity;
@@ -27,8 +29,13 @@ public class MessageController {
 	}
 	
 	@GetMapping("/getMessage")
-	public List<MessageEntity> getMessagesByMessageKey(String messageKey){
+	public List<MessageEntity> getMessagesByMessageKey(@RequestParam String messageKey){
 		return messageService.getMessagesByMessageKey(messageKey);
+	}
+	
+	@GetMapping("/getMessagebyPartialKey")
+	public List<MessageEntity> getMessageByPartialMessageKey(@RequestParam String messageKey){
+		return messageService.getMessageByPartialMessageKey(messageKey);
 	}
 
 }
