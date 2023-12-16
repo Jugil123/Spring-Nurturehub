@@ -37,4 +37,17 @@ public class MessageService {
 		
 		return null;
 	}
+	
+	public void deleteMessages(String messageKey) {
+		List<MessageEntity> messages = messagerepo.findByPartialMessageKeyAndIsDeleted(messageKey, 0);
+		
+		if(messages!=null) {
+			for(MessageEntity message: messages) {
+				message.setIsDeleted(1);
+				
+				messagerepo.save(message);
+			}
+		}
+		
+	}
 }

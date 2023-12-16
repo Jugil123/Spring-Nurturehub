@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +37,11 @@ public class MessageController {
 	@GetMapping("/getMessagebyPartialKey")
 	public List<MessageEntity> getMessageByPartialMessageKey(@RequestParam String messageKey){
 		return messageService.getMessageByPartialMessageKey(messageKey);
+	}
+	
+	@DeleteMapping("/deleteMessagebyPartialKey")
+	public void deleteMessage(@RequestParam String messageKey){
+		messageService.deleteMessages(messageKey);
 	}
 
 }
