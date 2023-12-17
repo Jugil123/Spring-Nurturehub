@@ -1,5 +1,6 @@
 package com.appdev.techno.ie.nurturehub.Service;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.appdev.techno.ie.nurturehub.Entity.AccountEntity;
 import com.appdev.techno.ie.nurturehub.Entity.AdminEntity;
@@ -137,5 +139,22 @@ public class AccountService {
 			}
 			
 			return null;
+		}
+		
+		public void updateProfilePicture(String username, MultipartFile file) {
+		    AccountEntity account = arepo.findByUsernameAndIsDeleted(username, 0);
+		   
+		    if(account != null) {
+		    	
+		    	 try {
+		    		 account.setProfilePicture(file.getBytes());
+				    } catch (IOException e) {
+				        // Handle the exception
+				        throw new RuntimeException("Failed to update profile picture", e);
+				    }
+			}
+		    
+		    arepo.save(account);
+		   
 		}
 }

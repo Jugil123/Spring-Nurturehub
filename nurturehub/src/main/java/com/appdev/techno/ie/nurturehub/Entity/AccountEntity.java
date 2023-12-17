@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
@@ -24,11 +25,15 @@ public class AccountEntity {
 	private int userType;
 	private int isDeleted;
 	
+	@Lob
+    @Column(name = "profile_picture")
+    private byte[] profilePicture;
+	
 	public AccountEntity() {
 		super();
 	}
 
-	public AccountEntity(int id, String firstname, String lastname, String username, String password, int userType) {
+	public AccountEntity(int id, String firstname, String lastname, String username, String password, int userType, byte[] profilePicture) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -37,6 +42,7 @@ public class AccountEntity {
 		this.password = password;
 		this.userType = userType;
 		this.isDeleted = 0;
+		this.profilePicture = profilePicture;
 	}
 
 	public int getId() {
@@ -95,6 +101,12 @@ public class AccountEntity {
 		this.lastname = lastname;
 	}
 
-	
+	public byte[] getProfilePicture() {
+		return profilePicture;
+	}
+
+	public void setProfilePicture(byte[] profilePicture) {
+		this.profilePicture = profilePicture;
+	}
 
 }
