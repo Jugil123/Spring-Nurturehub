@@ -57,6 +57,8 @@ public class AccountService {
 				
 			    //2.) update the record
 				account.setPassword(newAccountDetails.getPassword());
+				account.setFirstname(newAccountDetails.getFirstname());
+				account.setLastname(newAccountDetails.getLastname());
 				
 			}catch(NoSuchElementException ex) {
 				throw new NoSuchElementException("Recipient "+ username + " does not exist!");

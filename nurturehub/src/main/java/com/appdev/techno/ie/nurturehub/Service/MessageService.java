@@ -50,4 +50,26 @@ public class MessageService {
 		}
 		
 	}
+	
+	public void updateSenderOrReceiver(String name, String oldname, String messageKey) {
+		List<MessageEntity> messages = messagerepo.findByPartialMessageKeyAndIsDeleted(messageKey, 0);
+		
+		if(messages!=null) {
+			
+			for(MessageEntity message : messages) {
+				
+				if(oldname.equals(message.getReceiver())){
+					message.setReceiver(name);
+					
+				}
+				
+				if(oldname.equals(message.getSender())){
+					message.setSender(name);
+					
+				}				
+			}
+			
+			messagerepo.saveAll(messages);
+		}
+	}
 }
