@@ -109,7 +109,7 @@ public class AccountService {
 		                return userInfo;
 
 		            case 3: // Admin
-		                AdminEntity admin = adminrepo.findByUsername(username);
+		                AdminEntity admin = adminrepo.findByUsernameAndIsDeleted(username,0);
 		                userInfo.put("userType", userType);
 		                userInfo.put("userObject", admin);
 		                return userInfo;
